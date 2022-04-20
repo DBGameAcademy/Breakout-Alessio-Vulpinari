@@ -9,9 +9,15 @@ public class Ball : MonoBehaviour
 
     public Vector2 Velocity = new Vector2(4, 4);
 
+    GameController gameController;
+
+    public AudioClip OnWallHitAudio;
+    public AudioClip OnPaddleHitAudio;
+
     private void Awake()
     {
         circleCollider = GetComponent<CircleCollider2D>();
+        gameController = FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
@@ -33,13 +39,21 @@ public class Ball : MonoBehaviour
                 if (hit.transform.GetComponent<Paddle>())
                 {
                     Velocity.y = Mathf.Abs(Velocity.y);
+                    gameController.AudioController.PlayClip(OnPaddleHitAudio);
                 }
 
                 if (hit.transform.GetComponent<Block>())
                 {
                     hit.transform.GetComponent<Block>().OnHit();
                 }
+
+                gameController.AudioController.PlayClip(OnWallHitAudio);
             }
         }
+
+        if (transform.position.y < -Camera.main.orthographicSize)
+        {
+            gameController.BallLost();
+        }        
     }
 }

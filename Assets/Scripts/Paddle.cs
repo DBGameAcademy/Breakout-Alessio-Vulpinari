@@ -5,21 +5,16 @@ using UnityEngine;
 public class Paddle : MonoBehaviour
 {
     public float MoveSpeed;
+    Ball ball;
+    GameController gameController;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Debug.Log("Left Arrow Pressed!");
-            transform.Translate(Vector2.left * MoveSpeed * Time.deltaTime);
+        ball = FindObjectOfType<Ball>();
+    }
 
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Debug.Log("Right Arrow Pressed!");
-            transform.Translate(Vector2.right * MoveSpeed * Time.deltaTime);
-        }
+    public void Move(Vector2 _direction)
+    {
+        transform.Translate(_direction  * MoveSpeed * Time.deltaTime);
     }
 }

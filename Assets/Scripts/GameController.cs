@@ -33,17 +33,7 @@ public class GameController : MonoBehaviour
         PauseGame();
     }
 
-    private void Update()
-    {
-        if (!isPaused && Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseGame();
-        }
-        else if (isPaused && Input.anyKeyDown)
-        {
-            UnpauseGame();
-        }
-    }
+   
     public void AddScore(int _value)
     {
         Score += _value;

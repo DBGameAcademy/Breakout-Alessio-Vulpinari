@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlockController : MonoBehaviour
 {
     public GameObject BlockPrefab;
+    
 
     List<Vector3> BlockPositions = new List<Vector3>();
     Block[] Blocks;

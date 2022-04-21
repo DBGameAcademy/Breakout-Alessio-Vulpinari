@@ -24,7 +24,7 @@ public class InputController : MonoBehaviour
         }
         else if (gameController.IsPlaying && !gameController.IsPaused)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow ))
             {
                 paddle.Move(Vector2.left);
             }
